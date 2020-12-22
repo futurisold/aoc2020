@@ -1,7 +1,7 @@
 from collections import defaultdict
 
 
-with open('assertions', 'r') as f:
+with open('tests/assertions', 'r') as f:
     assertions = [line.strip() for line in f]
 
 

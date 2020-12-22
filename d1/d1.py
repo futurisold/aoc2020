@@ -1,4 +1,5 @@
-ins = [1721, 979, 366, 299, 675, 456]
+with open('tests/assertions', 'r') as f:
+    assertions = [int(line) for line in f]
 
 
 def find_prod_2(values):
@@ -8,7 +9,7 @@ def find_prod_2(values):
                 return x * y
 
 
-assert find_prod_2(ins) == 514579
+assert find_prod_2(assertions) == 514579
 
 
 def find_prod_3(values):
@@ -22,10 +23,10 @@ def find_prod_3(values):
                 return x * sum_2[y]
 
 
-assert find_prod_3(ins) == 241861950
+assert find_prod_3(assertions) == 241861950
 
 
 if __name__ == "__main__":
     with open('inputs', 'r') as f:
-        ins = [int(line) for line in f]
-        print(find_prod_2(ins), find_prod_3(ins))
+        inputs = [int(line) for line in f]
+        print(find_prod_2(inputs), find_prod_3(inputs))
