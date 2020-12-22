@@ -7,15 +7,8 @@ def find_id(row, col):
 
 
 def find_seat(config):
-    row, col = 0, 0
-    for i, r in enumerate(config[:-3]):
-        step = 2 ** (6 - i)
-        upper = 1 if r == 'B' else 0
-        row += step * upper
-    for i, c in enumerate(config[-3:]):
-        step = 2 ** (2 - i)
-        upper = 1 if c == 'R' else 0
-        col += step * upper
+    row = int(config[:-3].replace('B', '1').replace('F', '0'), 2)
+    col = int(config[-3:].replace('R', '1').replace('L', '0'), 2)
     return row, col
 
 
