@@ -1,5 +1,5 @@
 with open('tests/assertions') as f:
-    assertions1 = f.read().split('\n')
+    assertions = f.read().split('\n')
 
 
 def break_infinite_loop(instructions):
@@ -56,8 +56,8 @@ def adjust_index(idx, op, arg):
         return eval(f'{idx}{arg}')
 
 
-assert break_infinite_loop(assertions1) == 5
-assert fix_corrupt_instruction(assertions1) == 8
+assert break_infinite_loop(assertions) == 5
+assert fix_corrupt_instruction(assertions) == 8
 
 
 if __name__ == "__main__":
