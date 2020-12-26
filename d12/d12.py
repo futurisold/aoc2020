@@ -45,6 +45,13 @@ def navigate_relative_to_waypoint(actions):
             wp_x += amount
         elif action == 'W':
             wp_x -= amount
+        # we keep track of rotations in chunks of 90 degrees by using the rules:
+        # 1. counterclockwise
+        #     - new_x will become -old_y
+        #     - new_y will become old_x
+        # 2. clockwise
+        #     - new_x will become old_y
+        #     - new_y will become -old_x
         elif action == 'L':
             for _ in range(amount // 90):
                 wp_x, wp_y = -wp_y, wp_x
