@@ -35,8 +35,6 @@ def find_bus(depart, buses):
     One way to solve is by using the Chinese Reminder Theorem, as 7, 13, 59, 31, 19 are coprimes.
     (https://rosettacode.org/wiki/Chinese_remainder_theorem#Python_3.6)
 '''
-
-
 def factors(buses):
     return [(bus, (bus-i) % bus) for i, bus in buses]
 
@@ -62,11 +60,24 @@ def mul_inv(a, b):
     return x1
 
 
+'''
+    A more elegant solution
+'''
+def cr(divisors, reminders):
+    solution = reminders[0]
+    i = divisors[0]
+    for d, r in zip(divisors[1:], reminders[1:]):
+        while solution % d != r:
+            solution += i
+        i *= d
+    return solution % i
+
+
 A = process_raw(raw)
 assert find_bus(*A) == 295
 A = process_raw(raw, part_two=True)
 n, a = zip(*factors(A))
-assert chinese_remainder(n, a) == 1068781
+assert chinese_remainder(n, a) == cr(n, a) == 1068781
 
 
 if __name__ == '__main__':
