@@ -19,7 +19,7 @@ def init_program(program, v2=False):
             _ = step.split(' = ')
             mem_adr, val = int(_[0].split('mem[')[-1][:-1]), int(_[1])
             if not v2:
-                mem[mem_adr] = update_value_v1(mask, val)
+                mem[mem_adr] = update_value(mask, val)
             else:
                 mem_adrs = memory_address_decoder(mask, mem_adr)
                 for adr in mem_adrs:
@@ -27,7 +27,7 @@ def init_program(program, v2=False):
     return sum(mem.values())
 
 
-def update_value_v1(mask, val):
+def update_value(mask, val):
     bin_val = format(val, 'b')[::-1]
     i = 0
     new_val = 0
