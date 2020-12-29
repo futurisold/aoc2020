@@ -62,7 +62,6 @@ def decipher_ticket(tickets, rules):
                 pos = vs.pop()
                 mapping[f] = pos
                 remove.add(pos)
-                break
 
     p = 1
     for f in mapping:
