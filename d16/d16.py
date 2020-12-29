@@ -50,7 +50,6 @@ def decipher_ticket(tickets, rules):
                 lb, ub = rules[f]['lb'], rules[f]['ub']
                 if not (lb[0] <= v <= lb[1] or ub[0] <= v <= ub[1]):
                     ok = False
-                    # break
             if ok:
                 order[f].add(i)
 
